@@ -1,32 +1,20 @@
 <template>
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">
-      Dynamic Post Table
-    </h1>
+  <div class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold mb-6 text-center">Dynamic Post Table</h1>
+    <PostForm class="mb-6" />
 
-    <PostForm @create="postStore.addPost" class="mb-6" />
-
-    <div class="shadow overflow-hidden border border-gray-200 sm:rounded-lg">
+    <div class="shadow border border-gray-200 sm:rounded-lg overflow-hidden">
       <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-blue-50">
             <tr>
-              <th
-                scope="col"
-                class="px-3 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider sm:px-6"
-              >
+              <th class="px-3 py-3 text-left text-sm font-medium text-blue-700 uppercase">
                 Title
               </th>
-              <th
-                scope="col"
-                class="px-3 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider sm:px-6"
-              >
+              <th class="px-3 py-3 text-left text-sm font-medium text-blue-700 uppercase">
                 Description
               </th>
-              <th
-                scope="col"
-                class="px-3 py-3 text-right text-xs font-medium text-blue-700 uppercase tracking-wider sm:px-6"
-              >
+              <th class="px-3 py-3 text-right text-sm font-medium text-blue-700 uppercase">
                 Actions
               </th>
             </tr>
@@ -36,15 +24,14 @@
               v-for="post in postStore.posts"
               :key="post.id"
               :post="post"
-              @remove="postStore.removePost"
-              @update="postStore.updatePost"
-              class="hover:bg-gray-100 transition-colors duration-200"
             />
           </tbody>
         </table>
       </div>
-
-      <div v-if="postStore.posts.length === 0" class="text-center p-4 text-gray-500">
+      <div
+        v-if="postStore.posts.length === 0"
+        class="text-center p-4 text-gray-500"
+      >
         No posts available
       </div>
     </div>
@@ -52,9 +39,9 @@
 </template>
 
 <script setup>
-import PostForm from '@/components/PostForm.vue'
-import PostRow from '@/components/PostRow.vue'
-import { usePostStore } from '@/stores/postStore'
+import { usePostStore } from '@/stores/postStore';
+import PostRow from '@/components/PostRow.vue';
+import PostForm from '@/components/PostForm.vue';
 
-const postStore = usePostStore()
+const postStore = usePostStore();
 </script>
